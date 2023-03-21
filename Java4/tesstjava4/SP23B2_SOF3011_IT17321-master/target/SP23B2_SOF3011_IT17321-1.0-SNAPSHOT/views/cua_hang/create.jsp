@@ -32,14 +32,20 @@
                 <input type="text" name="diaChi" class="form-control" />
             </div>
             <div class="col-6">
-                <label>Thành phố</label>
-                <input type="text" name="thanhPho" class="form-control" />
+                <label>Quốc gia</label>
+                <select name="quocGia" class="form-select">
+                    <option value="VN">Việt Nam</option>
+                    <option value="US">Mỹ</option>
+                </select>
             </div>
         </div>
         <div class="row mt-3">
             <div class="col-6">
-                <label>Quốc gia</label>
-                <input type="text" name="quocGia" class="form-control" />
+                <label>Thành phố</label>
+                <select name="thanhPho" class="form-select">
+                    <option value="HN">Hà Nội</option>
+                    <option value="new_york">New York</option>
+                </select>
             </div>
         </div>
         <div class="row mt-3">
@@ -48,6 +54,7 @@
             </div>
             <div class="col-6"></div>
         </div>
+
     </form>
 </div>
 

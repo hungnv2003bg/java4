@@ -27,8 +27,8 @@ public class ChiTietSPServlet extends HttpServlet {
     public ChiTietSPServlet()
     {
         this.ctspRepo = new ChiTietSPRepository();
-        this.ctspRepo.insert(new ChiTietSP("Nokis 1280", "Nokia", "Red", "Laptop", 2023, "Còn hàng", 50, "1000000", "150000" ));
-        this.ctspRepo.insert(new ChiTietSP("Dell Pre M4", "Dell", "Blue", "Smar", 2024, "Hết hàng", 0, "50000", "70000" ));
+        this.ctspRepo.insert(new ChiTietSP("Nokis 1280", "Nokia", "Red", "Laptop", 2023, true, 50, "1000000", "150000" ));
+        this.ctspRepo.insert(new ChiTietSP("Dell Pre M4", "Dell", "Blue", "Smar", 2022, false, 0, "50000", "70000" ));
     }
     @Override
     protected void doGet(
@@ -115,7 +115,7 @@ public class ChiTietSPServlet extends HttpServlet {
         String soLuongTon = request.getParameter("soLuongTon");
         String giaNhap = request.getParameter("giaNhap");
         String giaBan = request.getParameter("giaBan");
-        ChiTietSP vm = new ChiTietSP(sanPham, nsx, mauSac, dongSP, Integer.valueOf(namBH), moTa, Integer.valueOf(namBH), giaNhap, giaBan);
+        ChiTietSP vm = new ChiTietSP(sanPham, nsx, mauSac, dongSP, Integer.valueOf(namBH), Boolean.valueOf(moTa), Integer.valueOf(namBH), giaNhap, giaBan);
 
         this.ctspRepo.update(vm);
         response.sendRedirect("/SP23B2_SOF3011_IT17321_war_exploded/ctsp/index");

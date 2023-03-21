@@ -12,7 +12,7 @@
     <link rel="stylesheet" href="/SP23B2_SOF3011_IT17321_war_exploded/css/bootstrap.min.css" />
 </head>
 <body>
-<div class="col-8 offset-2">
+<div class="col-8 offset-4">
     <form method="POST"
           action="/SP23B2_SOF3011_IT17321_war_exploded/cua-hang/update?ma=${ ch.ma }">
             <div class="col-6">

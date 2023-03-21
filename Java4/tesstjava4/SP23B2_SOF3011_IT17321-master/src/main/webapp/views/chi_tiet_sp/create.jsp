@@ -54,8 +54,16 @@
             </div>
             <div class="row mt-3">
                 <div class="col-6">
-                    <label>Năm BH</label>
-                    <input type="date" name="namBH" class="form-control" />
+
+                        <label >Năm BH</label>
+                        <select class="form-select" name="namBH">
+                            <option>2018</option>
+                            <option>2019</option>
+                            <option>2020</option>
+                            <option>2021</option>
+                            <option>2022</option>
+                            <option>2023</option>
+                        </select>
                 </div>
                 <div class="col-6">
                     <label>Số lượng tồn</label>

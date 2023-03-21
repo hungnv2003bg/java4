@@ -66,8 +66,8 @@
             <div class="col-6">
                 <label>Quốc gia</label>
                 <select name="quoc_gia" class="form-select">
-                    <option ${ nv.quoc_gia == "VN" ? "selected" : "" } value="vi">Việt Nam</option>
-                    <option ${ nv.quoc_gia == "USA" ? "selected" : "" } value="us">Mỹ</option>
+                    <option ${ nv.quoc_gia == "VN" ? "selected" : "" } value="VN">Việt Nam</option>
+                    <option ${ nv.quoc_gia == "US" ? "selected" : "" } value="US">Mỹ</option>
                 </select>
             </div>
             <div class="col-6">

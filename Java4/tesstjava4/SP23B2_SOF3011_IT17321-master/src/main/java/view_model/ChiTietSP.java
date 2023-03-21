@@ -6,7 +6,7 @@ public class ChiTietSP {
     private String mauSac;
     private String dongSP;
     private int namBH;
-    private String moTa;
+    private boolean moTa;
     private int soLuongTon;
     private String giaNhap;
     private String giaBan;
@@ -14,7 +14,7 @@ public class ChiTietSP {
     public ChiTietSP() {
     }
 
-    public ChiTietSP(String sanPham, String nsx, String mauSac, String dongSP, int namBH, String moTa, int soLuongTon, String giaNhap, String giaBan) {
+    public ChiTietSP(String sanPham, String nsx, String mauSac, String dongSP, int namBH, boolean moTa, int soLuongTon, String giaNhap, String giaBan) {
         this.sanPham = sanPham;
         this.nsx = nsx;
         this.mauSac = mauSac;
@@ -66,11 +66,11 @@ public class ChiTietSP {
         this.namBH = namBH;
     }
 
-    public String getMoTa() {
+    public boolean getMoTa() {
         return moTa;
     }
 
-    public void setMoTa(String moTa) {
+    public void setMoTa(boolean moTa) {
         this.moTa = moTa;
     }
 

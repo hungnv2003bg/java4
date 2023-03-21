@@ -27,8 +27,8 @@ public class NhanVienServlet extends HttpServlet {
     public NhanVienServlet()
     {
         this.nvRepo = new NhanVienRepository();
-        this.nvRepo.insert(new QLNhanVien("NV1", "Nguyễn", "Van", "Hung", true, "25-06-2003", "0123456789", "BG", "123","VN"));
-        this.nvRepo.insert(new QLNhanVien("NV2", "Tran", "Thi", "Sac", false, "01-06-1999", "0789645242", "HN", "321","VN"));
+        this.nvRepo.insert(new QLNhanVien("NV1", "Nguyễn", "Van", "Hung", true, "2003-06-25", "0123456789", "BG", "123","VN"));
+        this.nvRepo.insert(new QLNhanVien("NV2", "Tran", "Thi", "Sac", false, "1999-06-01", "0789645242", "HN", "321","VN"));
     }
     @Override
     protected void doGet(

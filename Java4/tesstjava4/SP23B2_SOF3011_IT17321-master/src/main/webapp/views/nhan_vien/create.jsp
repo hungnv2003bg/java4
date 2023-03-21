@@ -69,8 +69,8 @@
                 <div class="col-6">
                     <label>Quốc gia</label>
                     <select name="quoc_gia" class="form-select">
-                        <option value="vi">Việt Nam</option>
-                        <option value="us">Mỹ</option>
+                        <option value="VI">Việt Nam</option>
+                        <option value="US">Mỹ</option>
                     </select>
                 </div>
             </div>

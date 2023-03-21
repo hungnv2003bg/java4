@@ -47,7 +47,10 @@
                 <td>${ ctsp.mauSac }</td>
                 <td>${ ctsp.dongSP }</td>
                 <td>${ ctsp.namBH }</td>
-                <td>${ ctsp.moTa }</td>
+                <td>
+                    <c:if test="${ctsp.moTa == 'true'}">Còn hàng</c:if>
+                    <c:if test="${ctsp.moTa == 'false'}">Hết hàng</c:if>
+                </td>
                 <td>${ ctsp.soLuongTon }</td>
                 <td>${ ctsp.giaNhap }</td>
                 <td>${ ctsp.giaBan }</td>

@@ -129,6 +129,6 @@ public class ChucVuServlet extends HttpServlet {
             e.printStackTrace();
         }
 
-        response.sendRedirect("/SP23B2_SOF3011_IT17321_war_exploded/khach-hang/index");
+        response.sendRedirect("/SP23B2_SOF3011_IT17321_war_exploded/chuc-vu/index");
     }
 }
