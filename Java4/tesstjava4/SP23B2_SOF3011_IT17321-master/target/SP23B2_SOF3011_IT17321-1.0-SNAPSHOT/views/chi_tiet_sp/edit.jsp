@@ -14,7 +14,7 @@
 <body>
 <div class="col-8 offset-2">
     <form method="POST"
-          action="/SP23B2_SOF3011_IT17321_war_exploded/khach-hang/update?ma=${ kh.ma }">
+          action="/SP23B2_SOF3011_IT17321_war_exploded/ctsp/update?sanPham=${ ctsp.sanPham }">
         <div class="row mt-3">
             <div class="col-6">
                 <label>Sản phẩm</label>
@@ -53,8 +53,16 @@
         </div>
         <div class="row mt-3">
             <div class="col-6">
-                <label>Năm BH</label>
-                <input type="date" name="namBH" class="form-control" value="${ ctsp.namBH }" />
+
+                <label >Năm BH</label>
+                <select class="form-select" name="namBH">
+                    <option>2018</option>
+                    <option>2019</option>
+                    <option>2020</option>
+                    <option>2021</option>
+                    <option>2022</option>
+                    <option>2023</option>
+                </select>
             </div>
             <div class="col-6">
                 <label>Số lượng tồn</label>
