@@ -28,7 +28,7 @@ public class HibernateUtil {
 
         conf.setProperties(properties);
 //        conf.addAnnotatedClass(ChiTietSP.class);
-//        conf.addAnnotatedClass(ChucVu.class);
+        conf.addAnnotatedClass(ChucVu.class);
 //        conf.addAnnotatedClass(CuaHang.class);
 //        conf.addAnnotatedClass(DongSP.class);
 //        conf.addAnnotatedClass(GioHang.class);
@@ -36,7 +36,7 @@ public class HibernateUtil {
 //        conf.addAnnotatedClass(HoaDon.class);
 //        conf.addAnnotatedClass(HoaDonChiTiet.class);
         conf.addAnnotatedClass(KhachHang.class);
-//        conf.addAnnotatedClass(MauSac.class);
+        conf.addAnnotatedClass(MauSac.class);
 //        conf.addAnnotatedClass(NhanVien.class);
 //        conf.addAnnotatedClass(NSX.class);
 //        conf.addAnnotatedClass(SanPham.class);

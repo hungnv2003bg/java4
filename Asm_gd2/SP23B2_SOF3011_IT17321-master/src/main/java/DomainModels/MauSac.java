@@ -2,14 +2,16 @@ package DomainModels;
 
 import jakarta.persistence.*;
 
+import java.util.UUID;
+
 @Entity
 @Table(name="MauSac")
 
 public class MauSac {
     @Id
     @Column(name="Id")
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private String id;
+    @GeneratedValue(strategy = GenerationType.UUID)
+    private UUID id;
 
     @Column(name="Ma")
     private String ma;
@@ -20,17 +22,17 @@ public class MauSac {
     public MauSac() {
     }
 
-    public MauSac(String id, String ma, String ten) {
+    public MauSac(UUID id, String ma, String ten) {
         this.id = id;
         this.ma = ma;
         this.ten = ten;
     }
 
-    public String getId() {
+    public UUID getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(UUID id) {
         this.id = id;
     }
 
