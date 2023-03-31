@@ -2,13 +2,15 @@ package DomainModels;
 
 import jakarta.persistence.*;
 
+import java.util.UUID;
+
 @Entity
 @Table(name="DongSP")
 public class DongSP {
     @Id
     @Column(name="Id")
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private String id;
+    @GeneratedValue(strategy = GenerationType.UUID)
+    private UUID id;
 
     @Column(name="Ma")
     private String ma;
@@ -19,17 +21,17 @@ public class DongSP {
     public DongSP() {
     }
 
-    public DongSP(String id, String ma, String ten) {
+    public DongSP(UUID id, String ma, String ten) {
         this.id = id;
         this.ma = ma;
         this.ten = ten;
     }
 
-    public String getId() {
+    public UUID getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(UUID id) {
         this.id = id;
     }
 
