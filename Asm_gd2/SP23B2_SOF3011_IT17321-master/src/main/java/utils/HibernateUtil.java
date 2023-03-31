@@ -30,7 +30,7 @@ public class HibernateUtil {
 //        conf.addAnnotatedClass(ChiTietSP.class);
         conf.addAnnotatedClass(ChucVu.class);
 //        conf.addAnnotatedClass(CuaHang.class);
-//        conf.addAnnotatedClass(DongSP.class);
+        conf.addAnnotatedClass(DongSP.class);
 //        conf.addAnnotatedClass(GioHang.class);
 //        conf.addAnnotatedClass(GioHangChiTiet.class);
 //        conf.addAnnotatedClass(HoaDon.class);
@@ -38,7 +38,7 @@ public class HibernateUtil {
         conf.addAnnotatedClass(KhachHang.class);
         conf.addAnnotatedClass(MauSac.class);
 //        conf.addAnnotatedClass(NhanVien.class);
-//        conf.addAnnotatedClass(NSX.class);
+        conf.addAnnotatedClass(NSX.class);
 //        conf.addAnnotatedClass(SanPham.class);
 
         ServiceRegistry registry = new StandardServiceRegistryBuilder()

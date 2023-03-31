@@ -1,29 +1,29 @@
 package repositories;
 
-import DomainModels.DongSP;
+import DomainModels.NSX;
 import jakarta.persistence.TypedQuery;
 import org.hibernate.Session;
 import utils.HibernateUtil;
-import view_model.QLDongSP;
+import view_model.QLNSX;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class DongSPRepository {
-    private ArrayList<QLDongSP> list;
+public class NSXRepository {
+    private ArrayList<QLNSX> list;
     private Session hSession;
 
-    public DongSPRepository()
+    public NSXRepository()
     {
         this.hSession = HibernateUtil.getFACTORY().openSession();
         this.list = new ArrayList<>();
     }
 
-    public void insert(DongSP dsp)
+    public void insert(NSX nsx)
     {
         try {
             this.hSession.getTransaction().begin();
-            this.hSession.persist(dsp);
+            this.hSession.persist(nsx);
             this.hSession.getTransaction().commit();
         } catch (Exception e) {
             e.printStackTrace();
@@ -31,11 +31,11 @@ public class DongSPRepository {
         }
     }
 
-    public void update(DongSP dsp)
+    public void update(NSX nsx)
     {
         try {
             this.hSession.getTransaction().begin();
-            this.hSession.merge(dsp);
+            this.hSession.merge(nsx);
             this.hSession.getTransaction().commit();
         } catch (Exception e) {
             e.printStackTrace();
@@ -43,11 +43,11 @@ public class DongSPRepository {
         }
     }
 
-    public void delete(DongSP dsp)
+    public void delete(NSX nsx)
     {
         try {
             this.hSession.getTransaction().begin();
-            this.hSession.delete(dsp);
+            this.hSession.delete(nsx);
             this.hSession.getTransaction().commit();
         } catch (Exception e) {
             e.printStackTrace();
@@ -55,24 +55,24 @@ public class DongSPRepository {
         }
     }
 
-    public DongSP findById(String id)
+    public NSX findById(String id)
     {
-        return this.hSession.find(DongSP.class, id);
+        return this.hSession.find(NSX.class, id);
     }
 
-    public List<DongSP> findAll()
+    public List<NSX> findAll()
     {
-        String hql = "SELECT dspObj FROM DongSP dspObj";
-        TypedQuery<DongSP> query =
-                this.hSession.createQuery(hql, DongSP.class);
+        String hql = "SELECT nsxObj FROM NSX nsxObj";
+        TypedQuery<NSX> query =
+                this.hSession.createQuery(hql, NSX.class);
         return query.getResultList();
     }
 
-    public DongSP findByMa(String ma)
+    public NSX findByMa(String ma)
     {
-        String hql = "SELECT dspObj FROM DongSP dspObj WHERE dspObj.ma = ?1";
-        TypedQuery<DongSP> query =
-                this.hSession.createQuery(hql, DongSP.class);
+        String hql = "SELECT nsxObj FROM NSX nsxObj WHERE nsxObj.ma = ?1";
+        TypedQuery<NSX> query =
+                this.hSession.createQuery(hql, NSX.class);
 
         query.setParameter(1, ma);
         return query.getSingleResult();
