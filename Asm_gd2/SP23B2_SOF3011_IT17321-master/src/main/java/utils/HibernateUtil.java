@@ -1,12 +1,15 @@
 package utils;
 
 import DomainModels.*;
+import jakarta.persistence.TypedQuery;
+import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.cfg.Configuration;
 import org.hibernate.cfg.Environment;
 import org.hibernate.service.ServiceRegistry;
 
+import java.util.List;
 import java.util.Properties;
 
 public class HibernateUtil {
@@ -37,9 +40,9 @@ public class HibernateUtil {
 //        conf.addAnnotatedClass(HoaDonChiTiet.class);
         conf.addAnnotatedClass(KhachHang.class);
         conf.addAnnotatedClass(MauSac.class);
-//        conf.addAnnotatedClass(NhanVien.class);
+        conf.addAnnotatedClass(NhanVien.class);
         conf.addAnnotatedClass(NSX.class);
-//        conf.addAnnotatedClass(SanPham.class);
+        conf.addAnnotatedClass(SanPham.class);
 
         ServiceRegistry registry = new StandardServiceRegistryBuilder()
                 .applySettings(conf.getProperties()).build();
@@ -52,6 +55,15 @@ public class HibernateUtil {
     }
 
     public static void main(String[] args) {
-        System.out.println(getFACTORY());
+        Session s = getFACTORY().openSession();
+        String hql = "SELECT cv FROM ChucVu cv WHERE cv.ma = ?1";
+        TypedQuery<ChucVu> query = s.createQuery(hql, ChucVu.class);
+        query.setParameter(1, "cv4");
+        ChucVu cv = query.getSingleResult();
+        System.out.println(cv.getTen());
+
+        List<NhanVien> listNv = cv.getListNv();
+        NhanVien nv = listNv.get(0);
+        System.out.println(nv.getHo() + " " + nv.getTenDem() + " " + nv.getTen());
     }
 }

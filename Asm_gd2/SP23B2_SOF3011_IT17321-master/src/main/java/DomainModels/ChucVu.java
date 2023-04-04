@@ -2,11 +2,11 @@ package DomainModels;
 
 import jakarta.persistence.*;
 
+import java.util.List;
 import java.util.UUID;
 
 @Entity
 @Table(name="ChucVu")
-
 public class ChucVu {
     @Id
     @Column(name="Id")
@@ -18,12 +18,13 @@ public class ChucVu {
 
     @Column(name="Ten")
     private String ten;
-
-    public ChucVu(UUID id, String ma, String ten) {
-        this.id = id;
-        this.ma = ma;
-        this.ten = ten;
-    }
+    // Lazy (OneToMany, ManyToMany)
+    // Eager (ManyToOne, OneToOne)
+    @OneToMany(
+            mappedBy = "cv",
+            fetch = FetchType.EAGER
+    )
+    private List<NhanVien> listNv;
 
     public ChucVu() {
     }
@@ -50,5 +51,13 @@ public class ChucVu {
 
     public void setTen(String ten) {
         this.ten = ten;
+    }
+
+    public List<NhanVien> getListNv() {
+        return listNv;
+    }
+
+    public void setListNv(List<NhanVien> listNv) {
+        this.listNv = listNv;
     }
 }

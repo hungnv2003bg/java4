@@ -3,84 +3,69 @@ package DomainModels;
 import jakarta.persistence.*;
 
 import java.sql.Date;
-import java.util.List;
+import java.util.UUID;
 
 @Entity
 @Table(name="NhanVien")
-
 public class NhanVien {
     @Id
     @Column(name="Id")
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private String id;
+    @GeneratedValue(strategy = GenerationType.UUID)
+    private UUID id;
 
     @Column(name="Ma")
     private String ma;
 
+    @Column(name="Ho")
+    private String ho;
+
+    @Column(name="TenDem")
+    private String tenDem;
+
     @Column(name="Ten")
     private String ten;
 
-    @Column(name = "TenDem")
-    private String tenDem;
-
-    @Column(name = "Ho")
-    private String ho;
-
-    @Column(name = "GioiTinh")
+    @Column(name="GioiTinh")
     private String gioiTinh;
 
-    @Column(name = "NgaySinh")
+    @Column(name="NgaySinh")
     private Date ngaySinh;
 
-    @Column(name = "DiaChi")
+    @Column(name="DiaChi")
     private String diaChi;
 
-    @Column(name = "Sdt")
+    @Column(name="Sdt")
     private String sdt;
 
-    @Column(name = "MatKhau")
+    @Column(name="MatKhau")
     private String matKhau;
 
+    @Column(name="TrangThai")
+    private Integer trangThai;
 
-    @ManyToOne
-    @JoinColumn(name = "IdCH")
-    private CuaHang cuaHang;
+    @Column(name="IdCH")
+    private String idCH;
 
-    @ManyToOne
-    @JoinColumn(name = "IdCV")
-    private ChucVu chucVu;
+    @Column(name="IdGuiBC")
+    private String idGuiBC;
 
-    @OneToMany(mappedBy = "nhanVien", fetch = FetchType.EAGER)
-    private List<HoaDon> listHD;
-
-    @Column(name = "TrangThai")
-    private int trangThai;
+    // Lazy (OneToMany, ManyToMany)
+    // Eager (ManyToOne, OneToOne)
+    @ManyToOne()
+    @JoinColumn(
+            name="IdCV",
+            referencedColumnName = "Id"
+    )
+    private ChucVu cv;
 
     public NhanVien() {
     }
 
-    public NhanVien(String id, String ma, String ten, String tenDem, String ho, String gioiTinh, Date ngaySinh, String diaChi, String sdt, String matKhau, CuaHang cuaHang, ChucVu chucVu, List<HoaDon> listHD, int trangThai) {
-        this.id = id;
-        this.ma = ma;
-        this.ten = ten;
-        this.tenDem = tenDem;
-        this.ho = ho;
-        this.gioiTinh = gioiTinh;
-        this.ngaySinh = ngaySinh;
-        this.diaChi = diaChi;
-        this.sdt = sdt;
-        this.matKhau = matKhau;
-        this.cuaHang = cuaHang;
-        this.chucVu = chucVu;
-        this.listHD = listHD;
-        this.trangThai = trangThai;
-    }
-
-    public String getId() {
+    public UUID getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(UUID id) {
         this.id = id;
     }
 
@@ -92,12 +77,12 @@ public class NhanVien {
         this.ma = ma;
     }
 
-    public String getTen() {
-        return ten;
+    public String getHo() {
+        return ho;
     }
 
-    public void setTen(String ten) {
-        this.ten = ten;
+    public void setHo(String ho) {
+        this.ho = ho;
     }
 
     public String getTenDem() {
@@ -108,12 +93,12 @@ public class NhanVien {
         this.tenDem = tenDem;
     }
 
-    public String getHo() {
-        return ho;
+    public String getTen() {
+        return ten;
     }
 
-    public void setHo(String ho) {
-        this.ho = ho;
+    public void setTen(String ten) {
+        this.ten = ten;
     }
 
     public String getGioiTinh() {
@@ -156,35 +141,35 @@ public class NhanVien {
         this.matKhau = matKhau;
     }
 
-    public CuaHang getCuaHang() {
-        return cuaHang;
-    }
-
-    public void setCuaHang(CuaHang cuaHang) {
-        this.cuaHang = cuaHang;
-    }
-
-    public ChucVu getChucVu() {
-        return chucVu;
-    }
-
-    public void setChucVu(ChucVu chucVu) {
-        this.chucVu = chucVu;
-    }
-
-    public List<HoaDon> getListHD() {
-        return listHD;
-    }
-
-    public void setListHD(List<HoaDon> listHD) {
-        this.listHD = listHD;
-    }
-
-    public int getTrangThai() {
+    public Integer getTrangThai() {
         return trangThai;
     }
 
-    public void setTrangThai(int trangThai) {
+    public void setTrangThai(Integer trangThai) {
         this.trangThai = trangThai;
+    }
+
+    public String getIdCH() {
+        return idCH;
+    }
+
+    public void setIdCH(String idCH) {
+        this.idCH = idCH;
+    }
+
+    public String getIdGuiBC() {
+        return idGuiBC;
+    }
+
+    public void setIdGuiBC(String idGuiBC) {
+        this.idGuiBC = idGuiBC;
+    }
+
+    public ChucVu getCv() {
+        return cv;
+    }
+
+    public void setCv(ChucVu cv) {
+        this.cv = cv;
     }
 }
