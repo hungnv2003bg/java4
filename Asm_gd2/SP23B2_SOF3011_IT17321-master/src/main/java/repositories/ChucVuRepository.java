@@ -19,7 +19,7 @@ public class ChucVuRepository {
         this.list = new ArrayList<>();
     }
 
-    public void insert(ChucVu cv)
+    public Boolean insert(ChucVu cv)
     {
         try {
             this.hSession.getTransaction().begin();
@@ -29,9 +29,10 @@ public class ChucVuRepository {
             e.printStackTrace();
             this.hSession.getTransaction().rollback();
         }
+        return null;
     }
 
-    public void update(ChucVu cv)
+    public Boolean update(ChucVu cv)
     {
         try {
             this.hSession.getTransaction().begin();
@@ -41,9 +42,10 @@ public class ChucVuRepository {
             e.printStackTrace();
             this.hSession.getTransaction().rollback();
         }
+        return null;
     }
 
-    public void delete(ChucVu cv)
+    public Boolean delete(ChucVu cv)
     {
         try {
             this.hSession.getTransaction().begin();
@@ -53,6 +55,7 @@ public class ChucVuRepository {
             e.printStackTrace();
             this.hSession.getTransaction().rollback();
         }
+        return null;
     }
 
     public ChucVu findById(String id)

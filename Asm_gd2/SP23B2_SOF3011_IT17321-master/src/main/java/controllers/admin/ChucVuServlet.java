@@ -10,6 +10,8 @@ import jakarta.servlet.http.HttpServletResponse;
 import org.apache.commons.beanutils.BeanUtils;
 import repositories.ChucVuRepository;
 import repositories.KhachHangRepository;
+import services.ChucVuService;
+import services.impl.ChucVuServiceImpl;
 
 import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
@@ -23,11 +25,11 @@ import java.lang.reflect.InvocationTargetException;
     "/chuc-vu/update",   // POST
 })
 public class ChucVuServlet extends HttpServlet {
-    private ChucVuRepository cvRepo;
+    ChucVuService cvImpl;
 
     public ChucVuServlet()
     {
-        cvRepo = new ChucVuRepository();
+         cvImpl = new ChucVuServiceImpl();
     }
 
     @Override
@@ -53,8 +55,8 @@ public class ChucVuServlet extends HttpServlet {
             HttpServletResponse response
     ) throws ServletException, IOException {
         String ma = request.getParameter("ma");
-        ChucVu domainModelCV = this.cvRepo.findByMa(ma);
-        this.cvRepo.delete(domainModelCV);
+        ChucVu domainModelCV = this.cvImpl.findByMa(ma);
+        this.cvImpl.delete(domainModelCV);
 
         response.sendRedirect("/SP23B2_SOF3011_IT17321_war_exploded/chuc-vu/index");
     }
@@ -63,7 +65,7 @@ public class ChucVuServlet extends HttpServlet {
             HttpServletRequest request,
             HttpServletResponse response
     ) throws ServletException, IOException {
-        request.setAttribute("danhSachCV", this.cvRepo.findAll());
+        request.setAttribute("danhSachCV", this.cvImpl.getAll());
 //        request.getRequestDispatcher("/views/khach_hang/index.jsp")
         request.setAttribute("view", "/views/chuc_vu/index.jsp");
         request.getRequestDispatcher("/views/layout.jsp")
@@ -83,7 +85,7 @@ public class ChucVuServlet extends HttpServlet {
             HttpServletResponse response
     ) throws ServletException, IOException {
         String ma = request.getParameter("ma");
-        ChucVu domainModelCV = this.cvRepo.findByMa(ma);
+        ChucVu domainModelCV = this.cvImpl.findByMa(ma);
         request.setAttribute("cv", domainModelCV);
         request.getRequestDispatcher("/views/chuc_vu/edit.jsp")
                 .forward(request, response);
@@ -114,7 +116,7 @@ public class ChucVuServlet extends HttpServlet {
             ChucVu domainModelCV = new ChucVu();
             BeanUtils.populate(domainModelCV, request.getParameterMap());
             System.out.println(domainModelCV.getMa());
-            this.cvRepo.insert(domainModelCV);
+            this.cvImpl.add(domainModelCV);
         } catch (IllegalAccessException e) {
             e.printStackTrace();
         } catch (InvocationTargetException e) {
@@ -134,9 +136,9 @@ public class ChucVuServlet extends HttpServlet {
              * domainModelKH: Dữ liệu đang có trong DB
              * request.getParameterMap(): Dữ liệu người dùng cập nhật
              */
-            ChucVu domainModelCV = this.cvRepo.findByMa(ma);
+            ChucVu domainModelCV = this.cvImpl.findByMa(ma);
             BeanUtils.populate(domainModelCV, request.getParameterMap());
-            this.cvRepo.update(domainModelCV);
+            this.cvImpl.update(domainModelCV);
         } catch (IllegalAccessException e) {
             e.printStackTrace();
         } catch (InvocationTargetException e) {
