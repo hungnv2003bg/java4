@@ -1,0 +1,54 @@
+<%--
+  Created by IntelliJ IDEA.
+  User: Hung
+  Date: 2023-03-16
+  Time: 10:54
+  To change this template use File | Settings | File Templates.
+--%>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<html>
+<head>
+    <title>Title</title>
+    <link rel="stylesheet" href="/SP23B2_SOF3011_IT17321_war_exploded/css/bootstrap.min.css" />
+</head>
+<body>
+<div class="col-8 offset-4">
+    <form method="POST"
+          action="/SP23B2_SOF3011_IT17321_war_exploded/cua-hang/update?ma=${ ch.ma }">
+            <div class="col-6">
+                <label>Mã</label>
+                <input type="text" name="ma" class="form-control" value="${ ch.ma }" disabled />
+            </div>
+            <div class="col-6">
+                <label>Tên</label>
+                <input type="text" name="ten" class="form-control" value="${ ch.ten }" />
+            </div>
+            <div class="col-6">
+                <label>Địa chỉ</label>
+                <input type="text" name="diaChi" class="form-control" value="${ ch.diaChi }" />
+            </div>
+            <div class="col-6">
+                <label>Quốc gia</label>
+                <select name="quocGia" class="form-select">
+                    <option ${ ch.quocGia == "VN" ? "selected" : "" } value="VIE">Việt Nam</option>
+                    <option ${ ch.quocGia == "USA" ? "selected" : "" } value="USA">Mỹ</option>
+                </select>
+            </div>
+            <div class="col-6">
+                <label>Thành phố</label>
+                <select name="thanhPho" class="form-select">
+                    <option value="Hà Nội">Hà Nội</option>
+                    <option value="New York">New York</option>
+                </select>
+            </div>
+        <div class="row mt-3">
+            <div class="col-6">
+                <button class="btn btn-primary">Cập nhật</button>
+            </div>
+            <div class="col-6"></div>
+        </div>
+    </form>
+</div>
+<script src="/SP23B2_SOF3011_IT17321_war_exploded/js/bootstrap.min.js"></script>
+</body>
+</html>

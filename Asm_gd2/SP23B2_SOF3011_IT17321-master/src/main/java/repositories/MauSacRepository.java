@@ -19,7 +19,7 @@ public class MauSacRepository {
         this.list = new ArrayList<>();
     }
 
-    public void insert(MauSac ms)
+    public Boolean insert(MauSac ms)
     {
         try {
             this.hSession.getTransaction().begin();
@@ -29,9 +29,10 @@ public class MauSacRepository {
             e.printStackTrace();
             this.hSession.getTransaction().rollback();
         }
+        return null;
     }
 
-    public void update(MauSac ms)
+    public Boolean update(MauSac ms)
     {
         try {
             this.hSession.getTransaction().begin();
@@ -41,9 +42,10 @@ public class MauSacRepository {
             e.printStackTrace();
             this.hSession.getTransaction().rollback();
         }
+        return null;
     }
 
-    public void delete(MauSac ms)
+    public Boolean delete(MauSac ms)
     {
         try {
             this.hSession.getTransaction().begin();
@@ -53,6 +55,7 @@ public class MauSacRepository {
             e.printStackTrace();
             this.hSession.getTransaction().rollback();
         }
+        return null;
     }
 
     public MauSac findById(String id)

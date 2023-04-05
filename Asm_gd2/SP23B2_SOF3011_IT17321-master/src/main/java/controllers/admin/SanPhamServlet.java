@@ -8,6 +8,8 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import org.apache.commons.beanutils.BeanUtils;
 import repositories.SanPhamRepository;
+import services.SanPhamService;
+import services.impl.SanPhamServiceImpl;
 
 import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
@@ -21,11 +23,11 @@ import java.lang.reflect.InvocationTargetException;
     "/san-pham/update",   // POST
 })
 public class SanPhamServlet extends HttpServlet {
-    private SanPhamRepository spRepo;
+    private SanPhamService spImpl;
 
     public SanPhamServlet()
     {
-        spRepo = new SanPhamRepository();
+        spImpl = new SanPhamServiceImpl();
     }
 
     @Override
@@ -51,8 +53,8 @@ public class SanPhamServlet extends HttpServlet {
             HttpServletResponse response
     ) throws ServletException, IOException {
         String ma = request.getParameter("ma");
-        SanPham domainModelSP = this.spRepo.findByMa(ma);
-        this.spRepo.delete(domainModelSP);
+        SanPham domainModelSP = this.spImpl.findByMa(ma);
+        this.spImpl.delete(domainModelSP);
 
         response.sendRedirect("/SP23B2_SOF3011_IT17321_war_exploded/san-pham/index");
     }
@@ -61,7 +63,7 @@ public class SanPhamServlet extends HttpServlet {
             HttpServletRequest request,
             HttpServletResponse response
     ) throws ServletException, IOException {
-        request.setAttribute("danhSachSP", this.spRepo.findAll());
+        request.setAttribute("danhSachSP", this.spImpl.getAll());
 //        request.getRequestDispatcher("/views/khach_hang/index.jsp")
         request.setAttribute("view", "/views/san_pham/index.jsp");
         request.getRequestDispatcher("/views/layout.jsp")
@@ -81,7 +83,7 @@ public class SanPhamServlet extends HttpServlet {
             HttpServletResponse response
     ) throws ServletException, IOException {
         String ma = request.getParameter("ma");
-        SanPham domainModelSP = this.spRepo.findByMa(ma);
+        SanPham domainModelSP = this.spImpl.findByMa(ma);
         request.setAttribute("sp", domainModelSP);
         request.getRequestDispatcher("/views/san_pham/edit.jsp")
                 .forward(request, response);
@@ -112,7 +114,7 @@ public class SanPhamServlet extends HttpServlet {
             SanPham domainModelSP = new SanPham();
             BeanUtils.populate(domainModelSP, request.getParameterMap());
             System.out.println(domainModelSP.getMa());
-            this.spRepo.insert(domainModelSP);
+            this.spImpl.add(domainModelSP);
         } catch (IllegalAccessException e) {
             e.printStackTrace();
         } catch (InvocationTargetException e) {
@@ -132,9 +134,9 @@ public class SanPhamServlet extends HttpServlet {
              * domainModelKH: Dữ liệu đang có trong DB
              * request.getParameterMap(): Dữ liệu người dùng cập nhật
              */
-            SanPham domainModelSP = this.spRepo.findByMa(ma);
+            SanPham domainModelSP = this.spImpl.findByMa(ma);
             BeanUtils.populate(domainModelSP, request.getParameterMap());
-            this.spRepo.update(domainModelSP);
+            this.spImpl.update(domainModelSP);
         } catch (IllegalAccessException e) {
             e.printStackTrace();
         } catch (InvocationTargetException e) {

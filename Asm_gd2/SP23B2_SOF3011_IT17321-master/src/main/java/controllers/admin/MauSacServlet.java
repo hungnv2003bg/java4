@@ -8,6 +8,8 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import org.apache.commons.beanutils.BeanUtils;
 import repositories.MauSacRepository;
+import services.MauSacService;
+import services.impl.MauSacServiceImpl;
 
 import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
@@ -21,11 +23,11 @@ import java.lang.reflect.InvocationTargetException;
     "/mau-sac/update",   // POST
 })
 public class MauSacServlet extends HttpServlet {
-    private MauSacRepository msRepo;
+    private MauSacService msImpl;
 
     public MauSacServlet()
     {
-        msRepo = new MauSacRepository();
+        msImpl = new MauSacServiceImpl();
     }
 
     @Override
@@ -51,8 +53,8 @@ public class MauSacServlet extends HttpServlet {
             HttpServletResponse response
     ) throws ServletException, IOException {
         String ma = request.getParameter("ma");
-        MauSac domainModelMS = this.msRepo.findByMa(ma);
-        this.msRepo.delete(domainModelMS);
+        MauSac domainModelMS = this.msImpl.findByMa(ma);
+        this.msImpl.delete(domainModelMS);
 
         response.sendRedirect("/SP23B2_SOF3011_IT17321_war_exploded/mau-sac/index");
     }
@@ -61,7 +63,7 @@ public class MauSacServlet extends HttpServlet {
             HttpServletRequest request,
             HttpServletResponse response
     ) throws ServletException, IOException {
-        request.setAttribute("danhSachMS", this.msRepo.findAll());
+        request.setAttribute("danhSachMS", this.msImpl.getAll());
 //        request.getRequestDispatcher("/views/khach_hang/index.jsp")
         request.setAttribute("view", "/views/mau_sac/index.jsp");
         request.getRequestDispatcher("/views/layout.jsp")
@@ -81,7 +83,7 @@ public class MauSacServlet extends HttpServlet {
             HttpServletResponse response
     ) throws ServletException, IOException {
         String ma = request.getParameter("ma");
-        MauSac domainModelMS = this.msRepo.findByMa(ma);
+        MauSac domainModelMS = this.msImpl.findByMa(ma);
         request.setAttribute("ms", domainModelMS);
         request.getRequestDispatcher("/views/mau_sac/edit.jsp")
                 .forward(request, response);
@@ -112,7 +114,7 @@ public class MauSacServlet extends HttpServlet {
             MauSac domainModelMS = new MauSac();
             BeanUtils.populate(domainModelMS, request.getParameterMap());
             System.out.println(domainModelMS.getMa());
-            this.msRepo.insert(domainModelMS);
+            this.msImpl.add(domainModelMS);
         } catch (IllegalAccessException e) {
             e.printStackTrace();
         } catch (InvocationTargetException e) {
@@ -132,9 +134,9 @@ public class MauSacServlet extends HttpServlet {
              * domainModelKH: Dữ liệu đang có trong DB
              * request.getParameterMap(): Dữ liệu người dùng cập nhật
              */
-            MauSac domainModelMS = this.msRepo.findByMa(ma);
+            MauSac domainModelMS = this.msImpl.findByMa(ma);
             BeanUtils.populate(domainModelMS, request.getParameterMap());
-            this.msRepo.update(domainModelMS);
+            this.msImpl.update(domainModelMS);
         } catch (IllegalAccessException e) {
             e.printStackTrace();
         } catch (InvocationTargetException e) {

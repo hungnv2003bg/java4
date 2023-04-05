@@ -8,6 +8,8 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import org.apache.commons.beanutils.BeanUtils;
 import repositories.NSXRepository;
+import services.NSXService;
+import services.impl.NSXServiceImpl;
 
 import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
@@ -21,11 +23,11 @@ import java.lang.reflect.InvocationTargetException;
     "/nsx/update",   // POST
 })
 public class NSXServlet extends HttpServlet {
-    private NSXRepository nsxRepo;
+    private NSXService nsxImpl;
 
     public NSXServlet()
     {
-        nsxRepo = new NSXRepository();
+        nsxImpl = new NSXServiceImpl();
     }
 
     @Override
@@ -51,8 +53,8 @@ public class NSXServlet extends HttpServlet {
             HttpServletResponse response
     ) throws ServletException, IOException {
         String ma = request.getParameter("ma");
-        NSX domainModelNSX = this.nsxRepo.findByMa(ma);
-        this.nsxRepo.delete(domainModelNSX);
+        NSX domainModelNSX = this.nsxImpl.findByMa(ma);
+        this.nsxImpl.delete(domainModelNSX);
 
         response.sendRedirect("/SP23B2_SOF3011_IT17321_war_exploded/nsx/index");
     }
@@ -61,7 +63,7 @@ public class NSXServlet extends HttpServlet {
             HttpServletRequest request,
             HttpServletResponse response
     ) throws ServletException, IOException {
-        request.setAttribute("danhSachNSX", this.nsxRepo.findAll());
+        request.setAttribute("danhSachNSX", this.nsxImpl.getAll());
 //        request.getRequestDispatcher("/views/khach_hang/index.jsp")
         request.setAttribute("view", "/views/nsx/index.jsp");
         request.getRequestDispatcher("/views/layout.jsp")
@@ -81,7 +83,7 @@ public class NSXServlet extends HttpServlet {
             HttpServletResponse response
     ) throws ServletException, IOException {
         String ma = request.getParameter("ma");
-        NSX domainModelNSX = this.nsxRepo.findByMa(ma);
+        NSX domainModelNSX = this.nsxImpl.findByMa(ma);
         request.setAttribute("nsx", domainModelNSX);
         request.getRequestDispatcher("/views/nsx/edit.jsp")
                 .forward(request, response);
@@ -112,7 +114,7 @@ public class NSXServlet extends HttpServlet {
             NSX domainModelNSX = new NSX();
             BeanUtils.populate(domainModelNSX, request.getParameterMap());
             System.out.println(domainModelNSX.getMa());
-            this.nsxRepo.insert(domainModelNSX);
+            this.nsxImpl.add(domainModelNSX);
         } catch (IllegalAccessException e) {
             e.printStackTrace();
         } catch (InvocationTargetException e) {
@@ -132,9 +134,9 @@ public class NSXServlet extends HttpServlet {
              * domainModelKH: Dữ liệu đang có trong DB
              * request.getParameterMap(): Dữ liệu người dùng cập nhật
              */
-            NSX domainModelNSX = this.nsxRepo.findByMa(ma);
+            NSX domainModelNSX = this.nsxImpl.findByMa(ma);
             BeanUtils.populate(domainModelNSX, request.getParameterMap());
-            this.nsxRepo.update(domainModelNSX);
+            this.nsxImpl.update(domainModelNSX);
         } catch (IllegalAccessException e) {
             e.printStackTrace();
         } catch (InvocationTargetException e) {

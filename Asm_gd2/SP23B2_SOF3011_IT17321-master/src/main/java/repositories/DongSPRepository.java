@@ -19,7 +19,7 @@ public class DongSPRepository {
         this.list = new ArrayList<>();
     }
 
-    public void insert(DongSP dsp)
+    public Boolean insert(DongSP dsp)
     {
         try {
             this.hSession.getTransaction().begin();
@@ -29,9 +29,10 @@ public class DongSPRepository {
             e.printStackTrace();
             this.hSession.getTransaction().rollback();
         }
+        return null;
     }
 
-    public void update(DongSP dsp)
+    public Boolean update(DongSP dsp)
     {
         try {
             this.hSession.getTransaction().begin();
@@ -41,9 +42,10 @@ public class DongSPRepository {
             e.printStackTrace();
             this.hSession.getTransaction().rollback();
         }
+        return null;
     }
 
-    public void delete(DongSP dsp)
+    public Boolean delete(DongSP dsp)
     {
         try {
             this.hSession.getTransaction().begin();
@@ -53,6 +55,7 @@ public class DongSPRepository {
             e.printStackTrace();
             this.hSession.getTransaction().rollback();
         }
+        return null;
     }
 
     public DongSP findById(String id)

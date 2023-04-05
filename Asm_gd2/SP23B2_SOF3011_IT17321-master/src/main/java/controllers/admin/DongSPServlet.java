@@ -8,6 +8,8 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import org.apache.commons.beanutils.BeanUtils;
 import repositories.DongSPRepository;
+import services.DongSPService;
+import services.impl.DongSPServiceImpl;
 
 import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
@@ -21,11 +23,11 @@ import java.lang.reflect.InvocationTargetException;
     "/dsp/update",   // POST
 })
 public class DongSPServlet extends HttpServlet {
-    private DongSPRepository dspRepo;
+    private DongSPService dspImpl;
 
     public DongSPServlet()
     {
-        dspRepo = new DongSPRepository();
+        dspImpl = new DongSPServiceImpl();
     }
 
     @Override
@@ -51,8 +53,8 @@ public class DongSPServlet extends HttpServlet {
             HttpServletResponse response
     ) throws ServletException, IOException {
         String ma = request.getParameter("ma");
-        DongSP domainModelDSP = this.dspRepo.findByMa(ma);
-        this.dspRepo.delete(domainModelDSP);
+        DongSP domainModelDSP = this.dspImpl.findByMa(ma);
+        this.dspImpl.delete(domainModelDSP);
 
         response.sendRedirect("/SP23B2_SOF3011_IT17321_war_exploded/dsp/index");
     }
@@ -61,7 +63,7 @@ public class DongSPServlet extends HttpServlet {
             HttpServletRequest request,
             HttpServletResponse response
     ) throws ServletException, IOException {
-        request.setAttribute("danhSachDSP", this.dspRepo.findAll());
+        request.setAttribute("danhSachDSP", this.dspImpl.getAll());
 //        request.getRequestDispatcher("/views/khach_hang/index.jsp")
         request.setAttribute("view", "/views/dongsp/index.jsp");
         request.getRequestDispatcher("/views/layout.jsp")
@@ -81,7 +83,7 @@ public class DongSPServlet extends HttpServlet {
             HttpServletResponse response
     ) throws ServletException, IOException {
         String ma = request.getParameter("ma");
-        DongSP domainModelDSP = this.dspRepo.findByMa(ma);
+        DongSP domainModelDSP = this.dspImpl.findByMa(ma);
         request.setAttribute("dsp", domainModelDSP);
         request.getRequestDispatcher("/views/dongsp/edit.jsp")
                 .forward(request, response);
@@ -112,7 +114,7 @@ public class DongSPServlet extends HttpServlet {
             DongSP domainModelDSP = new DongSP();
             BeanUtils.populate(domainModelDSP, request.getParameterMap());
             System.out.println(domainModelDSP.getMa());
-            this.dspRepo.insert(domainModelDSP);
+            this.dspImpl.add(domainModelDSP);
         } catch (IllegalAccessException e) {
             e.printStackTrace();
         } catch (InvocationTargetException e) {
@@ -132,9 +134,9 @@ public class DongSPServlet extends HttpServlet {
              * domainModelKH: Dữ liệu đang có trong DB
              * request.getParameterMap(): Dữ liệu người dùng cập nhật
              */
-            DongSP domainModelDSP = this.dspRepo.findByMa(ma);
+            DongSP domainModelDSP = this.dspImpl.findByMa(ma);
             BeanUtils.populate(domainModelDSP, request.getParameterMap());
-            this.dspRepo.update(domainModelDSP);
+            this.dspImpl.update(domainModelDSP);
         } catch (IllegalAccessException e) {
             e.printStackTrace();
         } catch (InvocationTargetException e) {

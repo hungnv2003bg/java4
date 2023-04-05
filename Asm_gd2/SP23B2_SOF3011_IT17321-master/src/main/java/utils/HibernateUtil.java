@@ -30,9 +30,9 @@ public class HibernateUtil {
 //        properties.put(Environment.HBM2DDL_AUTO, "create");
 
         conf.setProperties(properties);
-//        conf.addAnnotatedClass(ChiTietSP.class);
+        conf.addAnnotatedClass(ChiTietSP.class);
         conf.addAnnotatedClass(ChucVu.class);
-//        conf.addAnnotatedClass(CuaHang.class);
+        conf.addAnnotatedClass(CuaHang.class);
         conf.addAnnotatedClass(DongSP.class);
 //        conf.addAnnotatedClass(GioHang.class);
 //        conf.addAnnotatedClass(GioHangChiTiet.class);

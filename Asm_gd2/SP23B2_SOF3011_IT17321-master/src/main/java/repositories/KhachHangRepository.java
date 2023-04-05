@@ -19,7 +19,7 @@ public class KhachHangRepository {
         this.list = new ArrayList<>();
     }
 
-    public void insert(KhachHang kh)
+    public Boolean insert(KhachHang kh)
     {
         try {
             this.hSession.getTransaction().begin();
@@ -29,9 +29,10 @@ public class KhachHangRepository {
             e.printStackTrace();
             this.hSession.getTransaction().rollback();
         }
+        return null;
     }
 
-    public void update(KhachHang kh)
+    public Boolean update(KhachHang kh)
     {
         try {
             this.hSession.getTransaction().begin();
@@ -41,9 +42,10 @@ public class KhachHangRepository {
             e.printStackTrace();
             this.hSession.getTransaction().rollback();
         }
+        return null;
     }
 
-    public void delete(KhachHang kh)
+    public Boolean delete(KhachHang kh)
     {
         try {
             this.hSession.getTransaction().begin();
@@ -53,6 +55,7 @@ public class KhachHangRepository {
             e.printStackTrace();
             this.hSession.getTransaction().rollback();
         }
+        return null;
     }
 
     public KhachHang findById(String id)

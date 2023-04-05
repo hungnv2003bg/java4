@@ -19,7 +19,7 @@ public class NSXRepository {
         this.list = new ArrayList<>();
     }
 
-    public void insert(NSX nsx)
+    public Boolean insert(NSX nsx)
     {
         try {
             this.hSession.getTransaction().begin();
@@ -29,9 +29,10 @@ public class NSXRepository {
             e.printStackTrace();
             this.hSession.getTransaction().rollback();
         }
+        return null;
     }
 
-    public void update(NSX nsx)
+    public Boolean update(NSX nsx)
     {
         try {
             this.hSession.getTransaction().begin();
@@ -41,9 +42,10 @@ public class NSXRepository {
             e.printStackTrace();
             this.hSession.getTransaction().rollback();
         }
+        return null;
     }
 
-    public void delete(NSX nsx)
+    public Boolean delete(NSX nsx)
     {
         try {
             this.hSession.getTransaction().begin();
@@ -53,6 +55,7 @@ public class NSXRepository {
             e.printStackTrace();
             this.hSession.getTransaction().rollback();
         }
+        return null;
     }
 
     public NSX findById(String id)

@@ -39,21 +39,21 @@
             <div class="row mt-3">
                 <div class="col-6">
                     <label>Ngày sinh</label>
-                    <input type="date" name="ngaySinh" class="form-control" />
+                    <input type="date" name="ngaySinh" class="form-control" value="${ kh.ngaySinh }" />
                 </div>
                 <div class="col-6">
                     <label>SDT</label>
-                    <input type="tel" name="sdt" class="form-control" />
+                    <input type="tel" name="sdt" class="form-control" value="${ kh.sdt }" />
                 </div>
             </div>
             <div class="row mt-3">
                 <div class="col-6">
                     <label>Địa chỉ</label>
-                    <input type="text" name="diaChi" class="form-control" />
+                    <input type="text" name="diaChi" class="form-control" value="${ kh.diaChi }" />
                 </div>
                 <div class="col-6">
                     <label>Mật khẩu</label>
-                    <input type="password" name="matKhau" class="form-control" />
+                    <input type="password" name="matKhau" class="form-control" value="${ kh.matKhau }" />
                 </div>
             </div>
             <div class="row mt-3">
@@ -74,7 +74,7 @@
             </div>
             <div class="row mt-3">
                 <div class="col-6">
-                    <button class="btn btn-primary">Thêm mới</button>
+                    <button class="btn btn-primary">Cập nhật</button>
                 </div>
                 <div class="col-6"></div>
             </div>

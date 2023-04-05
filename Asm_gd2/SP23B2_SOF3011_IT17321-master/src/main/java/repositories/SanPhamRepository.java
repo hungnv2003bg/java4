@@ -19,7 +19,7 @@ public class SanPhamRepository {
         this.list = new ArrayList<>();
     }
 
-    public void insert(SanPham sp)
+    public Boolean insert(SanPham sp)
     {
         try {
             this.hSession.getTransaction().begin();
@@ -29,9 +29,10 @@ public class SanPhamRepository {
             e.printStackTrace();
             this.hSession.getTransaction().rollback();
         }
+        return null;
     }
 
-    public void update(SanPham sp)
+    public Boolean update(SanPham sp)
     {
         try {
             this.hSession.getTransaction().begin();
@@ -41,9 +42,10 @@ public class SanPhamRepository {
             e.printStackTrace();
             this.hSession.getTransaction().rollback();
         }
+        return null;
     }
 
-    public void delete(SanPham sp)
+    public Boolean delete(SanPham sp)
     {
         try {
             this.hSession.getTransaction().begin();
@@ -53,6 +55,7 @@ public class SanPhamRepository {
             e.printStackTrace();
             this.hSession.getTransaction().rollback();
         }
+        return null;
     }
 
     public SanPham findById(String id)
