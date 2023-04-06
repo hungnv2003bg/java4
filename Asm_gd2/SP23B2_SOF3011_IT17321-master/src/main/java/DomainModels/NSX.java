@@ -1,9 +1,17 @@
 package DomainModels;
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
+import java.util.List;
 import java.util.UUID;
-
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
 @Entity
 @Table(name="NSX")
 
@@ -19,36 +27,6 @@ public class NSX {
     @Column(name="Ten")
     private String ten;
 
-    public NSX() {
-    }
-
-    public NSX(UUID id, String ma, String ten) {
-        this.id = id;
-        this.ma = ma;
-        this.ten = ten;
-    }
-
-    public UUID getId() {
-        return id;
-    }
-
-    public void setId(UUID id) {
-        this.id = id;
-    }
-
-    public String getMa() {
-        return ma;
-    }
-
-    public void setMa(String ma) {
-        this.ma = ma;
-    }
-
-    public String getTen() {
-        return ten;
-    }
-
-    public void setTen(String ten) {
-        this.ten = ten;
-    }
+    @OneToMany(mappedBy = "nsx", fetch = FetchType.LAZY)
+    private List<ChiTietSanPham> listChiTietSanPham;
 }

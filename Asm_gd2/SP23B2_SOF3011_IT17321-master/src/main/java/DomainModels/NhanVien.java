@@ -1,10 +1,18 @@
 package DomainModels;
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import java.sql.Date;
+import java.util.List;
 import java.util.UUID;
-
+@NoArgsConstructor
+@AllArgsConstructor
+@Getter
+@Setter
 @Entity
 @Table(name="NhanVien")
 public class NhanVien {
@@ -43,133 +51,20 @@ public class NhanVien {
     @Column(name="TrangThai")
     private Integer trangThai;
 
-    @Column(name="IdCH")
-    private String idCH;
+    @ManyToOne
+    @JoinColumn(name="IdCH")
+    private CuaHang cuaHang;
 
     @Column(name="IdGuiBC")
     private String idGuiBC;
 
     // Lazy (OneToMany, ManyToMany)
     // Eager (ManyToOne, OneToOne)
-    @ManyToOne()
-    @JoinColumn(
-            name="IdCV",
-            referencedColumnName = "Id"
-    )
-    private ChucVu cv;
+    @ManyToOne
+    @JoinColumn(name="IdCV")
+    private ChucVu chucVu;
 
-    public NhanVien() {
-    }
 
-    public UUID getId() {
-        return id;
-    }
 
-    public void setId(UUID id) {
-        this.id = id;
-    }
 
-    public String getMa() {
-        return ma;
-    }
-
-    public void setMa(String ma) {
-        this.ma = ma;
-    }
-
-    public String getHo() {
-        return ho;
-    }
-
-    public void setHo(String ho) {
-        this.ho = ho;
-    }
-
-    public String getTenDem() {
-        return tenDem;
-    }
-
-    public void setTenDem(String tenDem) {
-        this.tenDem = tenDem;
-    }
-
-    public String getTen() {
-        return ten;
-    }
-
-    public void setTen(String ten) {
-        this.ten = ten;
-    }
-
-    public String getGioiTinh() {
-        return gioiTinh;
-    }
-
-    public void setGioiTinh(String gioiTinh) {
-        this.gioiTinh = gioiTinh;
-    }
-
-    public Date getNgaySinh() {
-        return ngaySinh;
-    }
-
-    public void setNgaySinh(Date ngaySinh) {
-        this.ngaySinh = ngaySinh;
-    }
-
-    public String getDiaChi() {
-        return diaChi;
-    }
-
-    public void setDiaChi(String diaChi) {
-        this.diaChi = diaChi;
-    }
-
-    public String getSdt() {
-        return sdt;
-    }
-
-    public void setSdt(String sdt) {
-        this.sdt = sdt;
-    }
-
-    public String getMatKhau() {
-        return matKhau;
-    }
-
-    public void setMatKhau(String matKhau) {
-        this.matKhau = matKhau;
-    }
-
-    public Integer getTrangThai() {
-        return trangThai;
-    }
-
-    public void setTrangThai(Integer trangThai) {
-        this.trangThai = trangThai;
-    }
-
-    public String getIdCH() {
-        return idCH;
-    }
-
-    public void setIdCH(String idCH) {
-        this.idCH = idCH;
-    }
-
-    public String getIdGuiBC() {
-        return idGuiBC;
-    }
-
-    public void setIdGuiBC(String idGuiBC) {
-        this.idGuiBC = idGuiBC;
-    }
-
-    public ChucVu getCv() {
-        return cv;
-    }
-
-    public void setCv(ChucVu cv) {
-        this.cv = cv;
-    }
 }

@@ -10,4 +10,5 @@ public interface CuaHangService {
     public Boolean update(CuaHang ch);
     public Boolean delete(CuaHang ch);
     public CuaHang findByMa(String ma);
+    public CuaHang fingById(String id);
 }

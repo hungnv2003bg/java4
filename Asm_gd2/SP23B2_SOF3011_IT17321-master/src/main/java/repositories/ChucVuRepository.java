@@ -1,6 +1,8 @@
 package repositories;
 
 import DomainModels.ChucVu;
+import DomainModels.NhanVien;
+import jakarta.persistence.NoResultException;
 import jakarta.persistence.TypedQuery;
 import org.hibernate.Session;
 import utils.HibernateUtil;
@@ -78,6 +80,12 @@ public class ChucVuRepository {
                 this.hSession.createQuery(hql, ChucVu.class);
 
         query.setParameter(1, ma);
-        return query.getSingleResult();
+        try {
+            ChucVu cv = query.getSingleResult();
+            return cv;
+        }catch (NoResultException e){
+            e.printStackTrace();
+            return null;
+        }
     }
 }

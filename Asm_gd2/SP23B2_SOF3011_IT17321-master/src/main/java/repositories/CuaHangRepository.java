@@ -1,6 +1,8 @@
 package repositories;
 
 import DomainModels.CuaHang;
+import DomainModels.NhanVien;
+import jakarta.persistence.NoResultException;
 import jakarta.persistence.TypedQuery;
 import org.hibernate.Session;
 import utils.HibernateUtil;
@@ -78,6 +80,12 @@ public class CuaHangRepository {
                 this.hSession.createQuery(hql, CuaHang.class);
 
         query.setParameter(1, ma);
-        return query.getSingleResult();
+        try {
+            CuaHang ch = query.getSingleResult();
+            return ch;
+        }catch (NoResultException e){
+            e.printStackTrace();
+            return null;
+        }
     }
 }

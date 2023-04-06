@@ -16,7 +16,7 @@
     <a class="nav-link" href="/SP23B2_SOF3011_IT17321_war_exploded/nhan-vien/index">Nhân viên</a>
     <a class="nav-link" href="/SP23B2_SOF3011_IT17321_war_exploded/khach-hang/index">Khách hàng</a>
     <a class="nav-link" href="/SP23B2_SOF3011_IT17321_war_exploded/san-pham/index">Sản phẩm</a>
-    <a class="nav-link" href="/SP23B2_SOF3011_IT17321_war_exploded/ctsp/index">Chi tiết SP</a>
+    <a class="nav-link" href="/SP23B2_SOF3011_IT17321_war_exploded/chitiet-sp/index">Chi tiết SP</a>
     <a class="nav-link" href="/SP23B2_SOF3011_IT17321_war_exploded/nsx/index">NSX</a>
     <a class="nav-link" href="/SP23B2_SOF3011_IT17321_war_exploded/mau-sac/index">Màu sắc</a>
     <a class="nav-link" href="/SP23B2_SOF3011_IT17321_war_exploded/dsp/index">Dòng SP</a>

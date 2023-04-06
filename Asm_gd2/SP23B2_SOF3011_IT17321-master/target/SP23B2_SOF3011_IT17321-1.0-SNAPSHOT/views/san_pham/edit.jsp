@@ -21,7 +21,7 @@
             </div>
             <div class="col-6">
                 <label>Tên</label>
-                <input type="text" name="ten" class="form-control" value="${ sp.ten }" />
+                <input type="text" name="ten" class="form-control" value="${ sp.ten }" required/>
             </div>
         <div class="row mt-3">
             <div class="col-6">

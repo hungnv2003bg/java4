@@ -30,7 +30,7 @@ public class HibernateUtil {
 //        properties.put(Environment.HBM2DDL_AUTO, "create");
 
         conf.setProperties(properties);
-        conf.addAnnotatedClass(ChiTietSP.class);
+        conf.addAnnotatedClass(ChiTietSanPham.class);
         conf.addAnnotatedClass(ChucVu.class);
         conf.addAnnotatedClass(CuaHang.class);
         conf.addAnnotatedClass(DongSP.class);
@@ -62,7 +62,7 @@ public class HibernateUtil {
         ChucVu cv = query.getSingleResult();
         System.out.println(cv.getTen());
 
-        List<NhanVien> listNv = cv.getListNv();
+        List<NhanVien> listNv = cv.getListNhanVien();
         NhanVien nv = listNv.get(0);
         System.out.println(nv.getHo() + " " + nv.getTenDem() + " " + nv.getTen());
     }

@@ -1,9 +1,17 @@
 package DomainModels;
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import java.util.List;
 import java.util.UUID;
+@NoArgsConstructor
+@AllArgsConstructor
+@Getter
+@Setter
 
 @Entity
 @Table(name="ChucVu")
@@ -20,44 +28,8 @@ public class ChucVu {
     private String ten;
     // Lazy (OneToMany, ManyToMany)
     // Eager (ManyToOne, OneToOne)
-    @OneToMany(
-            mappedBy = "cv",
-            fetch = FetchType.EAGER
-    )
-    private List<NhanVien> listNv;
+    @OneToMany(mappedBy = "chucVu", fetch = FetchType.LAZY)
+    private List<NhanVien> listNhanVien;
 
-    public ChucVu() {
-    }
 
-    public UUID getId() {
-        return id;
-    }
-
-    public void setId(UUID id) {
-        this.id = id;
-    }
-
-    public String getMa() {
-        return ma;
-    }
-
-    public void setMa(String ma) {
-        this.ma = ma;
-    }
-
-    public String getTen() {
-        return ten;
-    }
-
-    public void setTen(String ten) {
-        this.ten = ten;
-    }
-
-    public List<NhanVien> getListNv() {
-        return listNv;
-    }
-
-    public void setListNv(List<NhanVien> listNv) {
-        this.listNv = listNv;
-    }
 }

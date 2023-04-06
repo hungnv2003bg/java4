@@ -32,4 +32,9 @@ CuaHangRepository chRepo = new CuaHangRepository();
     public CuaHang findByMa(String ma) {
         return chRepo.findByMa(ma);
     }
+
+    @Override
+    public CuaHang fingById(String id) {
+        return chRepo.findById(id);
+    }
 }
