@@ -23,17 +23,17 @@
                 </div>
                 <div class="col-6">
                     <label>Họ</label>
-                    <input type="text" name="ho" class="form-control" value="${ kh.ho }"required />
+                    <input type="text" name="ho" class="form-control" value="${ kh.ho }"required pattern="[a-zA-Z ]+" title="Họ bắt buộc phải là chữ"/>
                 </div>
             </div>
             <div class="row mt-3">
                 <div class="col-6">
                     <label>Tên đệm</label>
-                    <input type="text" name="tenDem" class="form-control" value="${ kh.tenDem }"required />
+                    <input type="text" name="tenDem" class="form-control" value="${ kh.tenDem }"required pattern="[a-zA-Z ]+" title="Tên đệm bắt buộc phải là chữ" />
                 </div>
                 <div class="col-6">
                     <label>Tên</label>
-                    <input type="text" name="ten" class="form-control" value="${ kh.ten }" required/>
+                    <input type="text" name="ten" class="form-control" value="${ kh.ten }" required pattern="[a-zA-Z ]+" title="Tên bắt buộc phải là chữ"/>
                 </div>
             </div>
             <div class="row mt-3">
@@ -43,7 +43,7 @@
                 </div>
                 <div class="col-6">
                     <label>SDT</label>
-                    <input type="tel" name="sdt" class="form-control" value="${ kh.sdt }" required/>
+                    <input type="tel" name="sdt" class="form-control" value="${ kh.sdt }" required pattern="[0-9]{10}" title="Số điện thoại phải có 10 số"/>
                 </div>
             </div>
             <div class="row mt-3">

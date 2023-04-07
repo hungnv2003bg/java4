@@ -19,7 +19,7 @@ import java.util.UUID;
 
 @Table(name="ChiTietSP")
 
-public class ChiTietSanPham implements Serializable {
+public class ChiTietSanPham{
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
 

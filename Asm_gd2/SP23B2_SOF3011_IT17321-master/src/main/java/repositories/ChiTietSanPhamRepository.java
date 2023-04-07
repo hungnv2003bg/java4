@@ -4,7 +4,7 @@ package repositories;
 
 
 import DomainModels.ChiTietSanPham;
-import jakarta.persistence.Query;
+
 import jakarta.persistence.TypedQuery;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
@@ -72,8 +72,9 @@ public class ChiTietSanPhamRepository {
     public List<ChiTietSanPham> findAll()
     {
         Session session = HibernateUtil.getFACTORY().openSession();
-        String hql = "SELECT obj FROM ChiTietSanPham obj";
-        TypedQuery<ChiTietSanPham> query = session.createQuery(hql, ChiTietSanPham.class);
+        String hql = "SELECT ctspobj FROM ChiTietSanPham ctspobj";
+        TypedQuery<ChiTietSanPham> query =
+                session.createQuery(hql, ChiTietSanPham.class);
         return query.getResultList();
     }
 
