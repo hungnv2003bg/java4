@@ -19,7 +19,7 @@
         <div class="row mt-3">
             <div class="col-6">
                 <label>Mã</label>
-                <input type="text" name="ma" class="form-control" />
+                <input type="text" name="ma" class="form-control" required />
             </div>
             <div class="col-6">
                 <label>Tên</label>

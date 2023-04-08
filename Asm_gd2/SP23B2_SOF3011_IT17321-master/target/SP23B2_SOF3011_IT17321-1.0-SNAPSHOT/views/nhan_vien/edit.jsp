@@ -13,17 +13,17 @@
             </div>
             <div class="col-6">
                 <label>Họ</label>
-                <input type="text" name="ho" class="form-control" value="${ nv.ho }" required/>
+                <input type="text" name="ho" class="form-control" value="${ nv.ho }" required pattern="[a-zA-Z ]+" title="Họ bắt buộc phải là chữ"/>
             </div>
         </div>
         <div class="row mt-3">
             <div class="col-6">
                 <label>Tên đệm</label>
-                <input type="text" name="tenDem" class="form-control" value="${ nv.tenDem }" required />
+                <input type="text" name="tenDem" class="form-control" value="${ nv.tenDem }" required pattern="[a-zA-Z ]+" title="Tên đệm bắt buộc phải là chữ" />
             </div>
             <div class="col-6">
                 <label>Tên</label>
-                <input type="text" name="ten" class="form-control" value="${ nv.ten }" required />
+                <input type="text" name="ten" class="form-control" value="${ nv.ten }" required pattern="[a-zA-Z ]+" title="Tên bắt buộc phải là chữ" />
             </div>
         </div>
         <div class="row mt-3">
@@ -33,7 +33,7 @@
             </div>
             <div class="col-6">
                 <label>SDT</label>
-                <input type="tel" name="sdt" class="form-control"  value="${ nv.sdt }" required/>
+                <input type="tel" name="sdt" class="form-control"  value="${ nv.sdt }" required pattern="[0-9]{10}" title="Số điện thoại phải có 10 số"/>
             </div>
         </div>
         <div class="row mt-3">
@@ -43,7 +43,7 @@
             </div>
             <div class="col-6">
                 <label>Giới tính</label>
-                <input type="text" name="gioiTinh" class="form-control" value="${ nv.gioiTinh }" required/>
+                <input type="text" name="gioiTinh" class="form-control" value="${ nv.gioiTinh }" required pattern="[a-zA-Z ]+" title="Giới tính phải là chữ"/>
             </div>
         </div>
         <div class="row mt-3">

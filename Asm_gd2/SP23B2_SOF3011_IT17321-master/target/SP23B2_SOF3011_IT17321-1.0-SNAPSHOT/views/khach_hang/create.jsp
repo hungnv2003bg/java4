@@ -23,27 +23,27 @@
                 </div>
                 <div class="col-6">
                     <label>Họ</label>
-                    <input type="text" name="ho" class="form-control" required/>
+                    <input type="text" name="ho" class="form-control" required pattern="[a-zA-Z ]+" title="Họ bắt buộc phải là chữ"/>
                 </div>
             </div>
             <div class="row mt-3">
                 <div class="col-6">
                     <label>Tên đệm</label>
-                    <input type="text" name="tenDem" class="form-control" required/>
+                    <input type="text" name="tenDem" class="form-control" pattern="[a-zA-Z ]+" title="Tên đệm bắt buộc phải là chữ" required/>
                 </div>
                 <div class="col-6">
                     <label>Tên</label>
-                    <input type="text" name="ten" class="form-control"required />
+                    <input type="text" name="ten" class="form-control"required pattern="[a-zA-Z ]+" title="Tên bắt buộc phải là chữ" />
                 </div>
             </div>
             <div class="row mt-3">
                 <div class="col-6">
                     <label>Ngày sinh</label>
-                    <input type="date" name="ngaySinh" class="form-control" required/>
+                    <input type="date" name="ngaySinh" class="form-control" required />
                 </div>
                 <div class="col-6">
                     <label>SDT</label>
-                    <input type="tel" name="sdt" class="form-control" required/>
+                    <input type="tel" name="sdt" class="form-control" required pattern="[0-9]{10}" title="Số điện thoại phải có 10 số"/>
                 </div>
             </div>
             <div class="row mt-3">
